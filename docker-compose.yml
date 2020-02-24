@@ -1,0 +1,63 @@
+version: '3.7'
+
+networks:
+    symfony-network:
+        name: symfony-network
+
+services:
+
+    nginx:
+        container_name: nginx
+        image: nginx:1.17.8
+        restart: on-failure
+        volumes:
+            - ./:/srv
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+        ports:
+            - 8001:80
+        networks:
+            - symfony-network
+
+    php-fpm:
+        container_name: php-fpm
+        build: ./docker/php-fpm/
+        image: php-fpm:home
+        restart: on-failure
+        environment:
+            APP_ENV: dev
+        volumes:
+            - ./:/srv
+        networks:
+            - symfony-network
+        depends_on:
+            - postgres
+            - memcached
+
+    postgres:
+        container_name: postgres
+        build: ./docker/postgres/
+        image: postgres:home
+        restart: on-failure
+        environment:
+            - POSTGRES_PASSWORD=secret1S
+            - PROJECT_DB_NAME=symfony
+            - PROJECT_USER_NAME=symfony
+            - PROJECT_USER_PASSWORD=secret1S
+        ports:
+            - "5001:5432"
+        networks:
+            - symfony-network
+
+    memcached:
+        container_name: memcached
+        image: memcached:1.5.22
+        restart: on-failure
+        networks:
+            - symfony-network
+
+    redis:
+        container_name: redis
+        image: redis:6.0-rc-buster
+        restart: on-failure
+        networks:
+            - symfony-network
