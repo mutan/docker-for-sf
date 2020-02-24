@@ -13,11 +13,11 @@
 
 2. Install package
 ```bash
-$ composer require mutan/docker-for-sf:dev-master
+composer require mutan/docker-for-sf:dev-master
 ```
 
-3. Make symlink to project root dir
+3. Make symlinks to project root dir
 ```
-$ ln -s vendor/mutan/docker-for-sf/docker-compose.yml .
-$ ln -s vendor/mutan/docker-for-sf/docker .
+ln -s vendor/mutan/docker-for-sf/docker-compose.yml .
+ln -s vendor/mutan/docker-for-sf/docker .
 ```
