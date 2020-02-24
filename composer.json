@@ -1,0 +1,13 @@
+{
+    "name": "mutan/docker-for-sf",
+    "description": "Docker compose for fast local dev environment",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Akim Gubanov",
+            "email": "akim.gubanov@gmail.com"
+        }
+    ],
+    "require": {}
+}
