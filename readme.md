@@ -16,8 +16,16 @@
 composer require mutan/docker-for-sf:dev-master
 ```
 
-3. Make symlinks to project root dir
-```
+3. Make symlinks in project root dir
+```bash
 ln -s vendor/mutan/docker-for-sf/docker-compose.yml .
 ln -s vendor/mutan/docker-for-sf/docker .
+```
+
+4. (optional) Update `.gitignore` in project root dir
+```
+###> mutan/docker-for-sf ###
+docker
+docker-compose.yml
+###< mutan/docker-for-sf ###
 ```
