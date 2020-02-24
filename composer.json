@@ -2,7 +2,7 @@
     "name": "mutan/docker-for-sf",
     "description": "Docker compose for fast local dev environment",
     "type": "library",
-    "license": "proprietary",
+    "license": "MIT License",
     "authors": [
         {
             "name": "Akim Gubanov",
