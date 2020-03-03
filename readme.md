@@ -33,5 +33,4 @@ docker-compose.yml
 ## Presentation
 
 Изначально этот репозиторий был подготовлен как наглядное пособие для доклада на внутреннем митапе компании Shiptor.  
-Презентация  
-[Быстрое подключение Docker’а к вашему проекту на Symfony](https://docs.google.com/presentation/d/1kTtHikWRgdZ_3J2a_PY2tykS8TmB7ii7NVRMHCr9WBc/edit?usp=sharing)
+Презентация: [Быстрое подключение Docker’а к вашему проекту на Symfony](https://docs.google.com/presentation/d/1kTtHikWRgdZ_3J2a_PY2tykS8TmB7ii7NVRMHCr9WBc/edit?usp=sharing)
