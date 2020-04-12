@@ -30,6 +30,11 @@ docker-compose.yml
 ###< mutan/docker-for-sf ###
 ```
 
+5. Run docker, then open ``localhost:8001``
+```bash
+docker-compose up -d --build
+```
+
 ## Presentation
 
 Изначально этот репозиторий был подготовлен как наглядное пособие для доклада на внутреннем митапе компании Shiptor.
