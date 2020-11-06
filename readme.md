@@ -13,7 +13,7 @@
 
 2. Install package
 ```bash
-composer require mutan/docker-for-sf:^1.0
+composer require --dev mutan/docker-for-sf:^1.0
 ```
 
 3. Make symlinks in project root dir
