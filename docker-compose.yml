@@ -1,14 +1,14 @@
 version: '3.7'
 
 networks:
-    symfony-network:
-        name: symfony-network
+    app-network:
+        name: app-network
 
 services:
 
     nginx:
-        container_name: nginx
-        image: nginx:1.17.8
+        container_name: app-nginx
+        image: nginx:1.19.4
         restart: on-failure
         volumes:
             - ./:/srv
@@ -16,48 +16,73 @@ services:
         ports:
             - 8001:80
         networks:
-            - symfony-network
+            - app-network
 
     php-fpm:
-        container_name: php-fpm
+        container_name: app-php-fpm
         build: ./docker/php-fpm/
-        image: php-fpm:home
+        image: php-fpm:app
         restart: on-failure
         environment:
             APP_ENV: dev
         volumes:
             - ./:/srv
         networks:
-            - symfony-network
+            - app-network
         depends_on:
             - postgres
+            - mysql
             - memcached
 
     postgres:
-        container_name: postgres
+        container_name: app-postgres
         build: ./docker/postgres/
-        image: postgres:home
+        image: postgres:app
         restart: on-failure
         environment:
             - POSTGRES_PASSWORD=secret1S
-            - PROJECT_DB_NAME=symfony
-            - PROJECT_USER_NAME=symfony
+            - PROJECT_DB_NAME=app
+            - PROJECT_USER_NAME=app
             - PROJECT_USER_PASSWORD=secret1S
         ports:
-            - "5001:5432"
+            - 5001:5432
         networks:
-            - symfony-network
+            - app-network
+
+    mysql:
+        container_name: app-mysql
+        image: mysql:8.0
+        command: --default-authentication-plugin=mysql_native_password
+        restart: on-failure
+        environment:
+            MYSQL_ROOT_PASSWORD: secret1S
+            MYSQL_DATABASE: app
+            MYSQL_USER: app
+            MYSQL_PASSWORD: secret1S
+        ports:
+            - 3001:3306
+        networks:
+            - app-network
+
+    adminer:
+        container_name: app-adminer
+        image: adminer:4.7.7-standalone
+        restart: always
+        ports:
+            - 8002:8080
+        networks:
+            - app-network
 
     memcached:
-        container_name: memcached
-        image: memcached:1.5.22
+        container_name: app-memcached
+        image: memcached:1.6.8
         restart: on-failure
         networks:
-            - symfony-network
+            - app-network
 
     redis:
-        container_name: redis
-        image: redis:6.0-rc-buster
+        container_name: app-redis
+        image: redis:6.0-buster
         restart: on-failure
         networks:
-            - symfony-network
+            - app-network
