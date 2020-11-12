@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         intl \
         exif \
         gd \
-        pgsql pdo pdo_pgsql
+        pgsql pdo pdo_pgsql pdo_mysql
 
 ADD ./php.ini /usr/local/etc/php/php.ini
 
