@@ -5,7 +5,7 @@
 "repositories": [
     {
         "type": "vcs",
-        "url": "ssh://git@github.com:22/mutan/docker-for-sf.git",
+        "url": "https://github.com/mutan/docker-for-sf.git",
         "reference": "master"
     }
 ]
