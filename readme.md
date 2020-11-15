@@ -38,7 +38,7 @@ docker-compose up -d --build
 ``localhost:8001`` your app  
 ``localhost:8002`` adminer  
 ``localhost:5001`` psql (connect from your local machine: ``psql -h localhost -p 5001 -U app``)  
-``localhost:3001`` mysql (connect from your local machine: `mysql -h 127.0.0.1 -P 3001 -u root -p`)  
+``localhost:3001`` mysql (connect from your local machine: `mysql -h 127.0.0.1 -P 3001 -u app -p`)  
 
 ## Presentation
 
