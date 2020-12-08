@@ -4,4 +4,4 @@ services:
   php-fpm:
     build:
       args:
-        user_name: akim
+        user_name: YOUR_USERNAME_HERE
