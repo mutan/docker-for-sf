@@ -23,3 +23,9 @@ ADD ./php.ini /usr/local/etc/php/php.ini
 COPY conf.d/ /usr/local/etc/php/conf.d
 
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+
+ARG user_name
+
+RUN useradd --create-home --shell /bin/bash $user_name
+
+WORKDIR /srv
