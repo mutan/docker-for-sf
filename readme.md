@@ -18,15 +18,20 @@ composer require --dev mutan/docker-for-sf:^1.0
 
 3. Make symlinks in project root dir
 ```bash
-ln -s vendor/mutan/docker-for-sf/docker-compose.yml .
 ln -s vendor/mutan/docker-for-sf/docker .
+ln -s vendor/mutan/docker-for-sf/docker-compose.yml .
+ln -s vendor/mutan/docker-for-sf/docker-compose.override.yml.dist docker-compose.override.yml
 ```
 
-4. (optional) Update `.gitignore` in project root dir
+4. In `docker-compose.override.yml` replace YOUR_USERNAME_HERE by your actual username. You can get your username in bash by `echo "$USER"` or `whoami`. This is needed to solve problem when Docker writes files as root.
+   
+
+5. (optional) Update `.gitignore` in project root dir
 ```
 ###> mutan/docker-for-sf ###
 docker
 docker-compose.yml
+docker-compose.override.yml
 ###< mutan/docker-for-sf ###
 ```
 

@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  php-fpm:
+    build:
+      args:
+        user_name: YOUR_USERNAME_HERE
