@@ -23,7 +23,9 @@ ln -s vendor/mutan/docker-for-sf/docker-compose.yml .
 ln -s vendor/mutan/docker-for-sf/docker-compose.override.yml.dist docker-compose.override.yml
 ```
 
-4. In `docker-compose.override.yml` replace YOUR_USERNAME_HERE by your actual username. You can get your username in bash by `echo "$USER"` or `whoami`. This is needed to solve problem when Docker writes files as root.
+4. To avoid the problem when you can't change files made inside docker as root:
+    * In `docker-compose.override.yml` replace YOUR_USERNAME_HERE by your actual username. You can get your username from bash by `echo "$USER"` or `whoami`.
+    * Run commands inside containers as YOUR_USERNAME_HERE, not as root: `docker container exec -it -u YOUR_USERNAME_HERE app-php-fpm bash`
    
 
 5. (optional) Update `.gitignore` in project root dir
